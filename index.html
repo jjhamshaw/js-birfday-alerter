@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>MSO Lon Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript" src="scripts/date.js"></script>
+    <script type="text/javascript" src="scripts/bday-calc.js"></script>
+</head>	
+<body>  
+	<header>
+		<a href="https://solutions.mckinsey.com"><img src='img/logo.png' alt="McKinsey Solutions" /></a>
+	</header>
+    <section id="future">
+    	<div class="title">Who's next!?</div>
+    	<ul class="birthdayList">
+    	</ul>
+    </section>
+    <section id="today">
+    	<div class="title">Happy Birthday to...</div>
+    	<ul class="birthdayList">
+        </ul>
+    </section>
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            var calc = new BirthdayCalculator();
+            // TEST
+            //var testDate = new Date(2013, 10, 31);
+            //var nextBDayPerson = calc.getNextFromDate(testDate);
+            var nextBDayPerson = calc.getNextFromNow();
+            
+
+            //construct line item
+            var div1 = '<div>Name: ' + nextBDayPerson.firstName + '</div>';
+            var div2 = '<div>Birthday: ' + nextBDayPerson.birthday.toDateString() + '</div>';
+            var img1 = '<img src="' + nextBDayPerson.imgPath + '" />'
+            var li = '<li>' + div1 + div2 + img1 + '</li>';
+
+            function aBirthdayIsToday(){
+                return false;
+            }
+
+            if (aBirthdayIsToday()) {
+                $("#future").hide();
+                $("#today ul").append(li);
+            }
+            else {
+                $("#today").hide();
+                $("#future ul").append(li);
+            }
+              
+        });
+    </script>
+</body>
+</html>
