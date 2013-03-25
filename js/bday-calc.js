@@ -26,6 +26,7 @@ function BirthdayCalculator(){
 	}
 
 	this.getNextFromDate = function(date){
+		//TODO get this year from date
 		var thisYear = 2013;
 		var sorted = people.sort(function(a,b){return a.birthday - b.birthday});
 
@@ -35,17 +36,21 @@ function BirthdayCalculator(){
 
 		for (var i = 0; i < sorted.length; i++) {
 			var birthday = sorted[i].birthday;
+			var lastInList = sorted[sorted.length - 1].birthday;
+			lastInList.setFullYear(thisYear);
 			birthday.setFullYear(thisYear);
 
-			if (sorted[sorted.length] < date) {
-				if (birthday > date) {
-					nextBday = sorted[i];
-				break;
-				};
-			}
-			else {
+			if (lastInList < date) {
+				//next is the first in the list
 				nextBday = sorted[0];
 				nextBday.birthday.setFullYear(thisYear + 1);
+				break;
+			}
+			else {
+				if (birthday > date) {
+					nextBday = sorted[i];
+					break;
+				};
 			};
 		};
 
