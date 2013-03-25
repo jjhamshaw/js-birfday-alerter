@@ -111,11 +111,13 @@
             var img1 = '<img src="' + nextBDayPerson.imgPath + '" />'
             var li = '<li>' + p + img1 + '</li>';
 
-            function aBirthdayIsToday(){
-                return false;
+            function aBirthdayIsToday(d1){
+              var d2 = new Date();
+                return d1.getUTCMonth() == d2.getUTCMonth() 
+                && d1.getUTCDate() == d2.getUTCDate();
             }
 
-            if (aBirthdayIsToday()) {
+            if (aBirthdayIsToday(nextBDayPerson.birthday)) {
                 $("#nextBirthday").hide();
                 $("#currentBirthday ul").append(li);
             }
