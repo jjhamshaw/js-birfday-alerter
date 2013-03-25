@@ -1,7 +1,9 @@
 function PersonRepo(){
 	this.list = [
+		//TODO: hack, all have to be the same year
 		new Person("aug", "31st", new Date(1985, 7, 31)),
 		new Person("jan", "1st", new Date(1985, 0, 1)),
+		new Person("Amy", "Dizzy", new Date(1985, 6, 26), 'http://m3.licdn.com/mpr/pub/image-CXw7gw0aocDJ1uHTW_8hczpU9HeRe4AThu8CQ9UF9e_4Vb_NCXwCQSQa96TExq853t57/amy-dziurzynski.jpg'),
 		new Person("dec", "30th", new Date(1985, 11, 30))
 	];
 

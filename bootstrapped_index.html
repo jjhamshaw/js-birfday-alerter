@@ -74,14 +74,12 @@
 
       <div id="nextBirthday" class="jumbotron">
         <h1>Who's next?!</h1>
-        <p class="lead">It's (someone's) birthday on (date)</p>
         <ul class="birthdayList">
         </ul>
       </div>
 
       <div id="currentBirthday" class="jumbotron">
         <h1>Happy Birthday!</h1>
-        <p class="lead">It's (someone's) birthday today</p>
         <ul class="birthdayList">
         </ul>
       </div>
@@ -109,10 +107,9 @@
             
 
             //construct line item
-            var div1 = '<div>Name: ' + nextBDayPerson.firstName + '</div>';
-            var div2 = '<div>Birthday: ' + nextBDayPerson.birthday.toDateString() + '</div>';
+            var p = '<p class="lead">It\'s ' + nextBDayPerson.firstName + '\'s birthday on ' + nextBDayPerson.birthday.toDateString() + '</p>'
             var img1 = '<img src="' + nextBDayPerson.imgPath + '" />'
-            var li = '<li>' + div1 + div2 + img1 + '</li>';
+            var li = '<li>' + p + img1 + '</li>';
 
             function aBirthdayIsToday(){
                 return false;
