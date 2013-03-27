@@ -21,16 +21,18 @@ function PersonRepo(){
 }
 
 function BirthdayCalculator(){
-	var people = new PersonRepo().list;
-	
+	//set this date to the same as a birthday to test
+	var now = new Date();
+
 	this.getNextFromNow = function(){
-		var now = new Date();
+		
 		return this.getNextFromDate(now);
 	}
 
 	this.getNextFromDate = function(date){
 		//TODO get this year from date
 		var thisYear = 2013;
+		var people = new PersonRepo().list;
 		var sorted = people.sort(function(a,b){return a.birthday - b.birthday});
 
 		var nextBday = null;
@@ -61,7 +63,7 @@ function BirthdayCalculator(){
 	};
 
 	function thereIsaBirthdayToday(d1){
-              var d2 = new Date();
+              var d2 = now;
                 return d1.getUTCMonth() == d2.getUTCMonth() 
                 && d1.getUTCDate() == d2.getUTCDate();
     };
@@ -69,6 +71,6 @@ function BirthdayCalculator(){
     this.thereIsaBirthdayToday = function(){
     	var nextBDayPerson = this.getNextFromNow();
     	return thereIsaBirthdayToday(nextBDayPerson.birthday);
-    }
+    };
 };
 
