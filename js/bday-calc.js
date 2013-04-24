@@ -5,7 +5,8 @@ function PersonRepo(){
 		new Person("March(25th)", "Test", new Date(1985, 2, 25)),
 		new Person("jan", "1st", new Date(1985, 0, 1)),
 		new Person("Amy", "Dizzy", new Date(1985, 6, 26)),
-		new Person("dec", "30th", new Date(1985, 11, 30))
+		new Person("dec", "30th", new Date(1985, 11, 30)),
+		new Person("Jon", "", new Date(1985, 3, 25))
 	];
 
 	function Person (firstName, lastName, birthday, imgUrl){
@@ -62,15 +63,15 @@ function BirthdayCalculator(){
 		return nextBday;
 	};
 
-	function thereIsaBirthdayToday(d1){
+	function aBirthdayIsToday(d1){
               var d2 = now;
                 return d1.getUTCMonth() == d2.getUTCMonth() 
-                && d1.getUTCDate() == d2.getUTCDate();
+                && d1.getDate() == d2.getDate();
     };
 
     this.thereIsaBirthdayToday = function(){
     	var nextBDayPerson = this.getNextFromNow();
-    	return thereIsaBirthdayToday(nextBDayPerson.birthday);
+    	return aBirthdayIsToday(nextBDayPerson.birthday);
     };
 };
 
